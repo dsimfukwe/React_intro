@@ -7,16 +7,23 @@ const styles = {
 };
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+  increaseCount() {
+    this.setState({ count: this.state.count + 1 });
+  }
   render() {
     return (
       <div style={styles}>
-        <h2>{this.props.count}</h2>
+        <button onClick={() => this.increaseCount()}>Increase</button>
+        <h2>{this.state.count}</h2>
       </div>
     );
   }
 }
 let count = 0;
-setInterval(
-  () => render(<App count={count++} />, document.getElementById("app")),
-  1000
-);
+render(<App />, document.getElementById("app"));
