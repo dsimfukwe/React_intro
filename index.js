@@ -11,5 +11,8 @@ const App = props => (
     <h2>{props.count}</h2>
   </div>
 );
-
-render(<App count={1} />, document.getElementById("app"));
+let count = 0;
+setInterval(
+  () => render(<App count={count++} />, document.getElementById("app")),
+  1000
+);
